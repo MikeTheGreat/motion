@@ -76,7 +76,7 @@ export interface IProjectionNode<I = unknown> {
     applyTransform(box: Box): Box
     resolveTargetDelta(): void
     calcProjection(): void
-    getProjectionStyles(): ResolvedValues
+    getProjectionStyles(): ResolvedValues | undefined
     clearMeasurements(): void
     resetTree(): void
 
@@ -109,6 +109,7 @@ export interface LayoutUpdateData {
     layout: Box
     snapshot: Snapshot
     delta: Delta
+    layoutDelta: Delta
     hasLayoutChanged: boolean
 }
 
@@ -130,7 +131,6 @@ export interface ProjectionNodeOptions {
     alwaysMeasureLayout?: boolean
     scheduleRender?: VoidFunction
     onExitComplete?: VoidFunction
-    onProjectionUpdate?(box: Box, delta: Delta): void
     animationType?: "size" | "position" | "both"
     layoutId?: string
     layout?: boolean | string

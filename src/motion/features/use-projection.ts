@@ -1,38 +1,15 @@
 import { HTMLProjectionNode } from "../../projection/node/HTMLProjectionNode"
 import { VisualElement } from "../../render/types"
 import { MotionProps } from "../types"
-import { useEffect } from "react"
 import { isRefObject } from "../../utils/is-ref-object"
 import { InitialPromotionConfig } from "context/SwitchLayoutGroupContext"
 
 export function useProjection(
     projectionId: number | undefined,
-    {
-        layoutId,
-        layout,
-        drag,
-        dragConstraints,
-        onProjectionUpdate,
-    }: MotionProps,
+    { layoutId, layout, drag, dragConstraints }: MotionProps,
     visualElement?: VisualElement,
     initialPromotionConfig?: InitialPromotionConfig
 ) {
-    /**
-     * Update latest options
-     * TODO: Currently only updating onProjectionUpdate but this will be where
-     * to add support for changing layoutId etc
-     */
-    useEffect(() => {
-        if (!visualElement) return
-        const { projection } = visualElement
-        if (!projection) return
-
-        projection.setOptions({
-            ...projection.options,
-            onProjectionUpdate,
-        })
-    }, [visualElement, onProjectionUpdate])
-
     if (!visualElement || visualElement?.projection) return
 
     visualElement.projection = new HTMLProjectionNode(
