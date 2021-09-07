@@ -30,7 +30,9 @@ Framer Motion is an open source, production-ready library that's designed for al
 It looks like this:
 
 ```jsx
-<motion.div animate={{ x: 0 }} />
+<motion.div animate={{ x: 0 }}>
+    <p>Move this to x=0</p>
+</motion.div>
 ```
 
 It does all this:
@@ -59,7 +61,9 @@ npm install framer-motion
 import { motion } from "framer-motion"
 
 export const MyComponent = ({ isVisible }) => (
-    <motion.div animate={{ opacity: isVisible ? 1 : 0 }} />
+    <motion.div animate={{ opacity: isVisible ? 1 : 0 }}>
+        <p>This fades in and out based on the 'isVisible' prop</p>
+    </motion.div>
 )
 ```
 
