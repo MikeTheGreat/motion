@@ -20,6 +20,8 @@ export class NodeStack {
             const prevLead = this.members[this.members.length - 1]
             if (prevLead) {
                 this.promote(prevLead)
+            } else {
+                this.lead = undefined
             }
         }
     }
